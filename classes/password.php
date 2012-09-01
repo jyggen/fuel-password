@@ -265,15 +265,7 @@ class Password
 		# of entropy.
 		$itoa64 = './ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-		if (version_compare(PHP_VERSION, '5.3.7') >= 0)
-		{
-			$output  = '$2y$';
-		}
-		else
-		{
-			$output  = '$2a$';
-		}
-
+		$output  = (version_compare(PHP_VERSION, '5.3.7') >= 0) ? '$2y$' : '$2a$';
 		$output .= chr(ord('0') + $this->iterations / 10);
 		$output .= chr(ord('0') + $this->iterations % 10);
 		$output .= '$';
