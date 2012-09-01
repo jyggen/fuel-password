@@ -178,7 +178,7 @@ class Password
 	{
 
 		$output  = '$P$';
-		$output .= $this->itoa64[min($this->iterations + ((PHP_VERSION >= '5') ? 5 : 3), 30)];
+		$output .= $this->itoa64[min($this->iterations + 5, 30)];
 		$output .= $this->encode64($input, 6);
 
 		return $output;
@@ -217,36 +217,13 @@ class Password
 			return $output;
 		}
 
-		# We're kind of forced to use MD5 here since it's the only
-		# cryptographic primitive available in all versions of PHP
-		# currently in use.  To implement our own low-level crypto
-		# in PHP would result in much worse performance and
-		# consequently in lower iteration counts and hashes that are
-		# quicker to crack (by non-PHP code).
-		if (PHP_VERSION >= '5')
+		$hash = md5($salt . $password, TRUE);
+
+		do
 		{
-
-			$hash = md5($salt . $password, TRUE);
-
-			do
-			{
-				$hash = md5($hash . $password, TRUE);
-			}
-			while (--$count);
-
+			$hash = md5($hash . $password, TRUE);
 		}
-		else
-		{
-
-			$hash = pack('H*', md5($salt . $password));
-
-			do
-			{
-				$hash = pack('H*', md5($hash . $password));
-			}
-			while (--$count);
-
-		}
+		while (--$count);
 
 		$output  = substr($setting, 0, 12);
 		$output .= $this->encode64($hash, 16);
