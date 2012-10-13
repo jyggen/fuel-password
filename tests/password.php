@@ -12,7 +12,7 @@
 
 namespace Password;
 
-class Test_Password extends \Fuel\Core\TestCase
+class Test_Password extends \PHPUnit_Framework_TestCase
 {
 
 	protected static $hashes = array(
