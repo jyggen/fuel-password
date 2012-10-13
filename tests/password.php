@@ -88,9 +88,10 @@ class Test_Password extends \PHPUnit_Framework_TestCase
 
 		foreach(static::$hashes as $key => $row)
 		{
-
-			$this->assertTrue($password->check($row['password'], $row['hash']));
-
+			if($key !== "mode_2y" or version_compare(PHP_VERSION, '5.3.7') >= 0)
+			{
+				$this->assertTrue($password->check($row['password'], $row['hash']));
+			}
 		}
 
 
