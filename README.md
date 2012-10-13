@@ -1,6 +1,8 @@
 # Password
 Password is a port of [PHPass](http://www.openwall.com/phpass/) (Portable PHP password hashing framework) to work as a package for FuelPHP.
 
+[![Build Status](https://secure.travis-ci.org/jyggen/fuel-password.png)](http://travis-ci.org/jyggen/fuel-password)
+
 ## Installation
 1. Clone (`git clone git://github.com/jyggen/fuel-password`) or [Download the package](https://github.com/jyggen/fuel-password/zipball/master).
 2. Password should be located in `./fuel/packages/`.
