@@ -6,7 +6,7 @@ Password is a port of [PHPass](http://www.openwall.com/phpass/) (Portable PHP pa
 ## Installation
 1. Clone (`git clone git://github.com/jyggen/fuel-password`) or [Download the package](https://github.com/jyggen/fuel-password/zipball/master).
 2. Password should be located in `./fuel/packages/`.
-4. Add `feeder` to your config.php `always_loaded.packages` config option (or use `Fuel::add_package('password')` in your code).
+4. Add `password` to your config.php `always_loaded.packages` config option (or use `Fuel::add_package('password')` in your code).
 5. Success!
 
 ## Usage
